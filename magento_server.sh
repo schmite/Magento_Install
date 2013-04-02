@@ -1,3 +1,31 @@
+#!/bin/bash
+
+#TODO document help opition
+USE_MESSAGE="
+Use: $0 [-h]
+
+	-h Show this help message and exit.
+
+"
+
+while test -n "$1"
+do
+	case "$1" in
+		-h | --help)
+			echo "$USE_MESSAGE"
+			exit 0
+		;;
+
+		-V | --version)
+			#TODO implement vesion log
+			exit 0
+		;;
+		
+	esac
+	
+	shift
+done
+
 # Install last updates
 yum update -y
 
@@ -69,3 +97,6 @@ yum install -y gd gd-devel
 yum install -y php-mcrypt php-xml php-devel php-imap php-soap php-mbstring
 yum install -y php-mhash php-simplexml php-dom php-gd php-pear php-pecl-imagick php-magickwand #(php-mhash extension no longer required as of php5.3(which is what you’ll get following these commands)-replaced by HASH Message Digest Framework in php core)
 yum install -y php-mysql php-pdo
+
+
+#TODO remove the script from /etc/rc.local
